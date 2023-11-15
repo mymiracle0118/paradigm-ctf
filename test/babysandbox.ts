@@ -60,5 +60,6 @@ it("solves the challenge", async function () {
 });
 
 after(async () => {
+  console.log("solved", await setup.isSolved());
   expect(await setup.isSolved()).to.be.true;
 });

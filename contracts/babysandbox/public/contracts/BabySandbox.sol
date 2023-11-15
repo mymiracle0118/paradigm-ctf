@@ -28,6 +28,7 @@ contract BabySandbox {
             // if this fails, then the code is malicious because it tried to change state
             if iszero(staticcall(gas(), address(), 0, calldatasize(), 0, 0)) {
                 revert(0x00, 0x00)
+                // returndatacopy(0x00, 0x00, returndatasize())
             }
             
             // if we got here, the code wasn't malicious
